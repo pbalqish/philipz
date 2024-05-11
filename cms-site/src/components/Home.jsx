@@ -22,6 +22,7 @@ export default function Home() {
                 <li className="nav-item">
                   <a className="nav-link" href="" id="nav-category">
                     {" "}
+                    /
                     <span className="icon material-symbols-outlined me-2">
                       category
                     </span>

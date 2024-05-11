@@ -1,14 +1,14 @@
 import NavBar from "./components/NavBar";
-import ProductCard from "./components/ProductCard";
+import HomePage from "./views/HomePage";
 import Footer from "./components/Footers";
-import Hero from "./components/Hero";
+import ProductDetail from "./components/ProductDetail";
 
 function App() {
   return (
     <>
       <NavBar />
-      <Hero />
-      <ProductCard />
+      {/* <HomePage /> */}
+      <ProductDetail />
       <Footer />
     </>
   );
