@@ -1,4 +1,50 @@
-export default function Login() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Toastify from "toastify-js";
+
+export default function LoginPage({ url }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  async function handleLogin(event) {
+    event.preventDefault();
+    try {
+      const loginData = { email, password };
+      const { data } = await axios.post(`${url}/apis/login`, loginData);
+
+      localStorage.setItem("access_token", data.data.access_token);
+
+      Toastify({
+        text: "You have successfully logged in",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "#7ABA78",
+        },
+      }).showToast();
+      navigate("/");
+    } catch (error) {
+      Toastify({
+        text: error.response.data.error,
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "#A91D3A",
+        },
+      }).showToast();
+    }
+  }
+
   return (
     <>
       <section className="container" id="login-section">
@@ -21,7 +67,7 @@ export default function Login() {
               </div>
               <div className="col-12 col-md-6 p-5 text-left">
                 <div className="form-signin m-auto">
-                  <form id="login-form">
+                  <form id="login-form" onSubmit={handleLogin}>
                     <h1 className="h3 mb-3 display-1">
                       Log in to your account
                     </h1>
@@ -42,7 +88,7 @@ export default function Login() {
                         id="login-email"
                         placeholder="Enter email address ..."
                         autoComplete="off"
-                        required
+                        onChange={(event) => setEmail(event.target.value)}
                       />
                     </div>
                     <div className="mb-4">
@@ -58,7 +104,7 @@ export default function Login() {
                         id="login-password"
                         placeholder="Enter your password ..."
                         autoComplete="off"
-                        required
+                        onChange={(event) => setPassword(event.target.value)}
                       />
                     </div>
                     <div className="checkbox mb-3">

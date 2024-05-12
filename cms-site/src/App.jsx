@@ -1,18 +1,10 @@
-import Home from "./components/Home";
-import Login from "./components/Login";
-import NavBar from "./components/NavBar";
+import { RouterProvider } from "react-router-dom";
+import router from "./routers/index";
 
 function App() {
   return (
     <>
-      {/* navbar */}
-      <NavBar />
-
-      {/* login */}
-      <Login />
-
-      {/* Home */}
-      <Home />
+      <RouterProvider router={router} />
     </>
   );
 }
