@@ -10,6 +10,7 @@ export default function ProductCard({ product }) {
         </figure>
         <div className="card-body gap-1">
           <h2 className="card-title">{product.name}</h2>
+          <p>{product.description}</p>
           <div className="card-actions justify-end">
             <button
               onClick={() => navigate(`/detail/${product.id}`)}
