@@ -1,15 +1,10 @@
-import NavBar from "./components/NavBar";
-import HomePage from "./views/HomePage";
-import Footer from "./components/Footers";
-import ProductDetail from "./components/ProductDetail";
+import { RouterProvider } from "react-router-dom";
+import router from "./routers/index";
 
 function App() {
   return (
     <>
-      <NavBar />
-      {/* <HomePage /> */}
-      <ProductDetail />
-      <Footer />
+      <RouterProvider router={router} />
     </>
   );
 }
