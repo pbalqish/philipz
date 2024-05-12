@@ -1,6 +1,7 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import BaseLayout from "../views/BaseLayout";
 import HomePage from "../views/HomePage";
+import ProductDetail from "../components/ProductDetail";
 
 const url = "https://phase2-aio.vercel.app";
 const router = createBrowserRouter([
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage url={url} />,
+      },
+      {
+        path: "/detail/:id",
+        element: <ProductDetail url={url} />,
       },
     ],
   },

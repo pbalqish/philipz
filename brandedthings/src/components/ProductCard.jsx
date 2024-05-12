@@ -1,6 +1,7 @@
-// import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard({ product }) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="card card-compact my-1 w-72 bg-base-200 shadow-xl">
@@ -10,7 +11,10 @@ export default function ProductCard({ product }) {
         <div className="card-body gap-1">
           <h2 className="card-title">{product.name}</h2>
           <div className="card-actions justify-end">
-            <button className="btn btn-outline btn-warning btn-sm">
+            <button
+              onClick={() => navigate(`/detail/${product.id}`)}
+              className="btn btn-outline btn-warning btn-sm"
+            >
               See Detail
             </button>
           </div>

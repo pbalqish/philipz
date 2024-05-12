@@ -11,12 +11,11 @@ export default function Hero() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Philips Indonesia</h1>
+            <h1 className="mb-5 text-5xl font-bold">Philipz Indonesia</h1>
             <p className="mb-5">
-              Temukan inovasi & teknologi dari Philips untuk membantu Anda
+              Temukan inovasi & teknologi dari Philipz untuk membantu Anda
               tampil dengan percaya diri serta hidup lebih sehat di sini!
             </p>
-            <button className="btn btn-primary text-white">Get Started</button>
           </div>
         </div>
       </div>
