@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toastify from "toastify-js";
 import ProductList from "../components/ProductList";
 
 export default function HomePage({ url }) {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
   async function fetchProducts() {
@@ -44,7 +46,11 @@ export default function HomePage({ url }) {
           >
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 className="display-2">Products</h1>
-              <button className="btn btn-primary rounded-pill" id="new-product">
+              <button
+                className="btn btn-primary rounded-pill"
+                id="new-product"
+                onClick={() => navigate("/add")}
+              >
                 <span className="icon material-symbols-outlined">add</span>New
                 Product
               </button>

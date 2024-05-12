@@ -64,16 +64,16 @@ const router = createBrowserRouter([
         element: <CreatePage url={url} />,
       },
       {
-        path: "/edit/:id",
-        element: <UpdatePage url={url} />,
-      },
-      {
         path: "/categories",
         element: <CategoriesPage url={url} />,
       },
       {
         path: "/register",
         element: <RegisterPage url={url} />,
+      },
+      {
+        path: "/edit/:id",
+        element: <UpdatePage url={url} />,
       },
       {
         path: "/edit/image/:id",

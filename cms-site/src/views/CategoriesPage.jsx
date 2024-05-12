@@ -1,4 +1,41 @@
-export default function CategoriesPage() {
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Toastify from "toastify-js";
+
+export default function CategoriesPage({ url }) {
+  const [categories, setCategories] = useState([]);
+
+  async function fetchCategories() {
+    try {
+      const { data } = await axios.get(
+        `${url}/apis/branded-things/categories`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.access_token}`,
+          },
+        }
+      );
+      setCategories(data.data);
+    } catch (error) {
+      Toastify({
+        text: error.response.data.error,
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "#A91D3A",
+        },
+      }).showToast();
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <>
       <section
@@ -17,24 +54,16 @@ export default function CategoriesPage() {
                   <th scope="col">Name</th>
                 </tr>
               </thead>
-              <tbody id="table-category">
-                <tr>
-                  <td scope="row">#1</td>
-                  <td className="fw-bold">Furniture</td>
-                </tr>
-                <tr>
-                  <td scope="row">#2</td>
-                  <td className="fw-bold">Workspace</td>
-                </tr>
-                <tr>
-                  <td scope="row">#3</td>
-                  <td className="fw-bold">Storage</td>
-                </tr>
-                <tr>
-                  <td scope="row">#4</td>
-                  <td className="fw-bold">Textile</td>
-                </tr>
-              </tbody>
+              {categories.map((category, index) => {
+                return (
+                  <tbody id="table-category" key={category.id}>
+                    <tr>
+                      <td scope="row">#{index + 1}</td>
+                      <td className="fw-bold">{category.name}</td>
+                    </tr>
+                  </tbody>
+                );
+              })}
             </table>
           </div>
         </div>
